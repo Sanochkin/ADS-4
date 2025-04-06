@@ -11,18 +11,14 @@ int countPairs1(int *arr, int len, int value) {
   return count;
 }
 int countPairs2(int* arr, int len, int value) {
-  int i = 0, j = len-1, count = 0, count_number = 1;
-  while (i != j) {
-    if (arr[i] + arr[j] == value) {
-      while (arr[j-1] == value-arr[i]) {
-        count_number++;
-        j--;
-      }
-      count+=count_number;
-      i++;
-    } else {
-      count_number = 1;
-      j--;
+  int count = 0, rbound = len-1;
+  while (arr[rbound] > value) {
+    rbound--;
+  }
+  for (int i = 0; i < len; i++) {
+    for (int j = rbound; j > i; j--) {
+      if (arr[i] + arr[j] == value)
+        count++;
     }
   }
   return count;
