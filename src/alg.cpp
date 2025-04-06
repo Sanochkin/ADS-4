@@ -44,7 +44,7 @@ int countPairs3(int *arr, int len, int value) {
           left_expansion--;
         }
         int right_expansion = middle + 1;
-        while (right_expansion < len && arr[right_expansion] == differnence) {
+        while (right_expansion < len && arr[right_expansion] == difference) {
           count++;
           right_expansion++;
         }
