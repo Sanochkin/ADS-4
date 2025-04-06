@@ -46,7 +46,7 @@ int binary_search(int *arr, int len, int value) {
 }
 int countPairs3(int *arr, int len, int value) {
   int count = 0;
-  for (int i = 0; i < len-1; i++) {
+  for (int i = 0; i < len; i++) {
     int difference = value - arr[i];
     if (difference < 0) {
       return count/2;
@@ -54,11 +54,11 @@ int countPairs3(int *arr, int len, int value) {
     int j = binary_search(arr, len, difference);
     if (j != -1) {
       int first = j;
-      while (first > 0 && arr[first] == arr[first - 1]) {
+      while (first > 0 && first < len && arr[first] == arr[first - 1]) {
         first--;
       }
       int last = j;
-      while (last < len - 1 && arr[last] == arr[last + 1]) {
+      while (last >= 0 && last < len - 1 && arr[last] == arr[last + 1]) {
         last++;
       }
       count += (last - first + 1);
